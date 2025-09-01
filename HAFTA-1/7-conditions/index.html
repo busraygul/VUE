@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2 p-2">
+                <div id="app">
+                    <button class="btn btn-sm btn-primary" @click="showContainer = !showContainer">Aç/Kapat</button>
+                    <h1 v-if="!showContainer" class="text-danger">Başlangıçta gözükecek</h1>
+                    <h1 v-else class="text">Sonra gözükecek</h1>
+                    <!-- aynı etiketse else kullanabilrim -->
+                    <hr>
+
+                    <h3 :class="counterBoxClass"> {{ counter }}
+                    </h3>
+                    <button class="btn btn-sm btn-success" @click="counter++">Arttır</button>
+                    <button class="btn btn-sm btn-danger" @click="counter--">Azalt</button>
+
+                    <p class="mt-2" v-if="counter < 0">Counter Negatif</p>
+                    <p class="mt-2" v-else-if="counter > 0">Counter Pozitif</p>
+                    <p class="mt-2" v-else="counter == 0">Counter 0</p>
+                    <hr>
+
+                    <p class="mt-2" v-show="counter < 0" >Counter Negatif</p>
+                    <p class="mt-2" v-show="counter > 0" >Counter Pozitif</p>
+                    <p class="mt-2" v-show="counter == 0" >Counter 0</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
