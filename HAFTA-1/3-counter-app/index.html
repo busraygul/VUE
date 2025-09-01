@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row mt-5">
+            <div class="col-2 card p-2 me-2">
+                <h3 class="text-center">{{ counter }}</h3>
+                <div class="d-flex justify-content-center align-items-center">
+                    <!-- <button @click = "inc" class="btn me-2 btn-sm btn-primary">+</button>
+                    <button @click = "dec" class="btn btn-sm btn-danger">-</button>
+                    böyle fonksiyon tanımlamak yerine direkt aşağıdaki gibi counter ı değiştirebiliriz -->
+
+                    <button @click="counter++" class="btn me-2 btn-sm btn-primary">+</button>
+                    <button @click="counter--" class="btn btn-sm btn-danger">-</button>
+                </div>
+                <!-- <div class="alert alert-warning mt-2">
+                    {{ counter > 5 ? 'Büyük' : 'Küçük'}}</div> 
+                    string interpoliton içerisinde 1 satırlık işlem yapılır.
+                    Eğer daha çok şey yazmamız gerekirse method kısmında fonk.tanımlayıp aşağıdaki gibi çağırırız-->
+
+                <div class="alert alert-warning mt-2">
+                    {{ getCounterResult }}
+                    <!-- getCounterResult() method kısmında böyle computed kısmında () bunlarsız -->
+                </div>
+            </div>
+
+            <div class="col-2 card p-2">
+                <h3 class="text-center">{{ counter2 }}</h3>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <button @click="counter2++" class="btn me-2 btn-sm btn-primary">+</button>
+                    <button @click="counter2--" class="btn btn-sm btn-danger">-</button>
+                </div>
+                <div class="alert alert-warning mt-2">
+                    {{ getCounter2Result }}</div> 
+                    <!-- getCounter2Result() method kısmında böyle computed kısmında () bunlarsız -->
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
