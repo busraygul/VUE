@@ -40,4 +40,3 @@ const app = Vue.createApp({
 
 }).mount("#app")
 
-//app.mount("#app") //böyle de tanımlanabilir
