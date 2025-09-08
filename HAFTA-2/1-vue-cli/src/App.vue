@@ -6,7 +6,7 @@
   </div>
   <CounterItem></CounterItem>
 
-  <!-- <benim-guzel-sayacim></benim-guzel-sayacim> -->
+  <!-- <benim-sayacim></benim-sayacim> -->
   <!-- <CounterItem/>
 
     <counter-item/> 
@@ -20,7 +20,7 @@
   export default {
     components: {
       CounterItem: CounterItem, //key valuesi aynı  olduğu için CounterItem yazsak da yeterli olur
-      // benim-guzel-sayacim: CounterItem  istediğim şekilde tanımlayabilirim. 
+      // benim-sayacim: CounterItem  istediğim şekilde tanımlayabilirim. 
       // sadece sağ taraf import ederken kullandığımla aynı olmalı
     }
 }
