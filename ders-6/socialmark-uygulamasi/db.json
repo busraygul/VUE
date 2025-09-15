@@ -1,24 +1,84 @@
 {
   "users": [
     {
-      "id": "4e2c",
-      "username": "ba",
-      "fullname": "ba",
-      "password": "1ba0aa7f92b5456613c89ddf4343430a2713f44c"
-    },
-    {
-      "id": "cd1b",
-      "username": "busra",
-      "fullname": "busra",
-      "password": "41f987326c48dd86924a20356ef1a9a304be6480"
-    },
-    {
-      "id": "f5d9",
+      "id": "b9b2",
       "username": "busraygul",
-      "fullname": "Büşra Aygül",
+      "fullname": "Büşra",
       "password": "eb5b044b0c244d97ca159919d7cf8c469dd853d7"
+    },
+    {
+      "id": "20ad",
+      "username": "aygul",
+      "fullname": "Aygül",
+      "password": "f05a94fcd0019686a10a886aa267cd131ab28b26",
+      "likes": [
+        "1"
+      ]
     }
   ],
-  "bookmarks": [],
-  "categories": []
+  "bookmarks": [
+    {
+      "id": "1",
+      "title": "vue3",
+      "url": ".com",
+      "categoryId": 1,
+      "description": "framework",
+      "userId": "b9b2",
+      "created_at": "2025-09-15T10:51:29.932Z"
+    },
+    {
+      "id": "2",
+      "title": "Node.js",
+      "url": ".com",
+      "categoryId": 4,
+      "description": "node",
+      "userId": "b9b2",
+      "created_at": "2025-09-15T11:15:14.039Z"
+    },
+    {
+      "id": "3",
+      "title": "deneme",
+      "url": "deneme",
+      "categoryId": 2,
+      "description": "deneme",
+      "userId": "20ad",
+      "created_at": "2025-09-15T11:35:12.400Z"
+    },
+    {
+      "id": "4",
+      "title": "h",
+      "url": "h",
+      "categoryId": 1,
+      "description": "h",
+      "userId": "20ad",
+      "created_at": "2025-09-15T12:34:27.764Z"
+    },
+    {
+      "id": "5",
+      "title": "JavaScript",
+      "url": "js.com",
+      "categoryId": 3,
+      "description": "javascript",
+      "userId": "20ad",
+      "created_at": "2025-09-15T12:43:33.020Z"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Vue.js",
+      "id": "1"
+    },
+    {
+      "name": "React.js",
+      "id": "2"
+    },
+    {
+      "name": "Frontend",
+      "id": "3"
+    },
+    {
+      "name": "Backend",
+      "id": "4"
+    }
+  ]
 }
