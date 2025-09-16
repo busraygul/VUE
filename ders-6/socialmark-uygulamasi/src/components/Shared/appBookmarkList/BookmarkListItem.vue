@@ -59,13 +59,63 @@ export default {
     }
   },
   methods: {
-    likeItem(){
-      console.log("_userLikes", this._userLikes);
-      const likes = [ ...this._userLikes, this.item.id];
-      this.$appAxios.patch(`/users/${this._getCurrentUser.id}`, { likes }).then(like_response => {
-        console.log(like_response);
-        this.$store.commit("addToLikes", this.item.id);
-      })
+    likeItem() {
+      this.$appAxios({
+        url: this.alreadyLiked ? `/user_likes/${this.likedItem.id}` : "/user_likes",
+        method: this.alreadyLiked ? "DELETE" : "POST",
+        data: {
+          userId: this._getCurrentUser.id,
+          bookmarkId: this.item.id
+        }
+      }).then(user_like_response => {
+        let bookmarks = [...this._userLikes];
+        if (this.alreadyLiked) {
+          bookmarks = bookmarks.filter(b => b.id !== this.likedItem.id);
+        } else {
+          bookmarks = [...bookmarks, user_like_response.data];
+        }
+        this.$store.commit("setLikes", bookmarks);
+      });
+    },
+    _likeItem() {
+      let likes = [...this._userLikes];
+      if (!this.alreadyLiked) {
+        likes = [...likes, this.item.id];
+      } else {
+        likes = likes.filter(l => l !== this.item.id);
+      }
+      this.$appAxios.patch(`/users/${this._getCurrentUser.id}`, { likes }).then(() => {
+        this.$store.commit("setLikes", likes);
+      });
+    },
+    bookmarkItem() {
+      this.$appAxios({
+        url: this.alreadyBookmarked ? `/user_bookmarks/${this.bookmarkedItem.id}` : "/user_bookmarks",
+        method: this.alreadyBookmarked ? "DELETE" : "POST",
+        data: {
+          userId: this._getCurrentUser.id,
+          bookmarkId: this.item.id
+        }
+      }).then(user_bookmark_response => {
+        let bookmarks = [...this._userBookmarks];
+        if (this.alreadyBookmarked) {
+          bookmarks = bookmarks.filter(b => b.id !== this.bookmarkedItem.id);
+        } else {
+          bookmarks = [...bookmarks, user_bookmark_response.data];
+        }
+        this.$store.commit("setBookmarks", bookmarks);
+      });
+    },
+    _bookmarkItem() {
+      let bookmarks = [...this._userBookmarks];
+      if (!this.alreadyBookmarked) {
+        bookmarks = [...bookmarks, this.item.id];
+      } else {
+        bookmarks = bookmarks.filter(b => b !== this.item.id);
+      }
+      this.$appAxios.patch(`/users/${this._getCurrentUser.id}`, { bookmarks }).then(() => {
+        this.$store.commit("setBookmarks", bookmarks);
+      });
     }
   },
   computed: {
@@ -75,7 +125,26 @@ export default {
     userName() {
       return this.item?.user?.fullname || "-";
     },
-    ...mapGetters(["_getCurrentUser","_userLikes"])
+    alreadyLiked(){
+      return Boolean(this.likedItem);
+    },
+    alreadyBookmarked(){
+      return Boolean(this.bookmarkItem);
+    },
+    bookmarkedItem() {
+      return this._userBookmarks?.find(b => b.bookmarkId === this.item.id);
+    },
+     likedItem() {
+      return this._userLikes?.find(b => b.bookmarkId === this.item.id);
+    },
+    // alreadyLiked(){
+    //   return this._userLikes?.indexOf(this.item.id) > -1
+      
+    // },
+    // alreadyBookmarked(){
+    //   return this._userBookmarks?.indexOf(this.item.id) > -1
+    // },
+    ...mapGetters(["_getCurrentUser","_userLikes","_userBookmarks"])
   }
 };
 </script>
