@@ -3,5 +3,5 @@
     <hr class="bg-gradient-to-r h-[1px] border-none from-gray-700 mb-2" />
 </template>
 <script setup>
-defineProps({title: String});
+defineProps({ title: String });
 </script>

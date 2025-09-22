@@ -1,6 +1,6 @@
 <template>
-<section class="bg-gray-900 w-full max-w-3xl mx-auto mt-10 p-2 px-5 rounded-md shadow-2xl">
-        
+    <section class="bg-gray-900 w-full max-w-3xl mx-auto mt-10 p-2 px-5 rounded-md shadow-2xl">
+
         <!-- FAtura Bilgileri -->
         <contact-section :contact="state.contact" />
         <div class="mt-5">
@@ -24,7 +24,7 @@ import invoiceSummary from './invoiceSummary.vue';
 import contactSection from './contactSection.vue';
 
 import { reactive, provide, watch } from "vue";
-const props = defineProps({ saveInvoice : Function, activeInvoice : [Object, null]});
+const props = defineProps({ saveInvoice: Function, activeInvoice: [Object, null] });
 
 const state = reactive({
     id: null,
@@ -40,11 +40,11 @@ const state = reactive({
 });
 const AddInvoiceItem = () => {
     state.items.push({
-        id : new Date().getTime(),
-        name : null, 
-        qty : null,
-        unit_price : null,
-        total_price : 0.0,
+        id: new Date().getTime(),
+        name: null,
+        qty: null,
+        unit_price: null,
+        total_price: 0.0,
     });
 };
 
@@ -56,7 +56,7 @@ provide("DeleteInvoiceItem", DeleteInvoiceItem);
 
 const onSubmit = () => {
     props.saveInvoice({ ...state, created_at: new Date(), id: new Date().getTime() });
-    state.contact =  {
+    state.contact = {
         contact_name: null,
         email: null,
         city: null,
@@ -67,13 +67,13 @@ const onSubmit = () => {
 };
 
 watch(
-  () => props.activeInvoice,
-  (activeInvoice) => {
-    if (activeInvoice) {
-      state.contact = {
-        ...activeInvoice.contact,
-      };
-      state.items = [...activeInvoice.items];
+    () => props.activeInvoice,
+    (activeInvoice) => {
+        if (activeInvoice) {
+            state.contact = {
+                ...activeInvoice.contact,
+            };
+            state.items = [...activeInvoice.items];
     }
   }
 );
